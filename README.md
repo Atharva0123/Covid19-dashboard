@@ -3,205 +3,211 @@
 <h1>COVID19-DASHBOARD</h1>
 
 <p align="left">
-	<img src="https://img.shields.io/github/license/Atharva0123/Covid19-dashboard?style=default&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="license">
-	<img src="https://img.shields.io/github/last-commit/Atharva0123/Covid19-dashboard?style=default&logo=git&logoColor=white&color=0080ff" alt="last-commit">
-	<img src="https://img.shields.io/github/languages/top/Atharva0123/Covid19-dashboard?style=default&color=0080ff" alt="repo-top-language">
-	<img src="https://img.shields.io/github/languages/count/Atharva0123/Covid19-dashboard?style=default&color=0080ff" alt="repo-language-count">
+<img src="https://img.shields.io/github/license/Atharva0123/Covid19-dashboard?style=default&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="license">
+<img src="https://img.shields.io/github/last-commit/Atharva0123/Covid19-dashboard?style=default&logo=git&logoColor=white&color=0080ff" alt="last-commit">
+<img src="https://img.shields.io/github/languages/top/Atharva0123/Covid19-dashboard?style=default&color=0080ff" alt="repo-top-language">
+<img src="https://img.shields.io/github/languages/count/Atharva0123/Covid19-dashboard?style=default&color=0080ff" alt="repo-language-count">
 </p>
 <p align="left"><!-- default option, no dependency badges. -->
 </p>
 <p align="left">
-	<!-- default option, no dependency badges. -->
+<!-- default option, no dependency badges. -->
 </p>
 </div>
 <br clear="right">
 
-## 🔗 Table of Contents
+🔗 Table of Contents
 
-- [📍 Overview](#-overview)
-- [👾 Features](#-features)
-- [📁 Project Structure](#-project-structure)
-  - [📂 Project Index](#-project-index)
-- [🚀 Getting Started](#-getting-started)
-  - [☑️ Prerequisites](#-prerequisites)
-  - [⚙️ Installation](#-installation)
-  - [🤖 Usage](#🤖-usage)
-  - [🧪 Testing](#🧪-testing)
-- [📌 Project Roadmap](#-project-roadmap)
-- [🔰 Contributing](#-contributing)
-- [🎗 License](#-license)
-- [🙌 Acknowledgments](#-acknowledgments)
+📍 Overview
 
----
+👾 Features
 
-## 📍 Overview
-<code>❯ This application provides a comprehensive, interactive, and visually striking dashboard for analyzing global COVID-19 data. It is engineered with a separation of concerns strategy, using two Python files:</code>
+📁 Project Structure
+  - 📂 Project Index
 
-<code>❯ FDS_backend.py: Handles all data processing (loading, cleaning, calculating rates, filtering, and aggregation) using the Pandas library.</code>
+🚀 Getting Started
+  - ☑️ Prerequisites
+  - ⚙️ Installation
+  - 🤖 Usage
+  - 🧪 Testing
 
-<code>❯ FDS_app.py: Manages the user interface and visualization using Streamlit and Plotly for a dynamic, dark-themed experience.</code>
+📌 Project Roadmap
 
----
+🔰 Contributing
 
-## 👾 Features
+🎗 License
 
-<code>❯ Interactive Filtering: Users can filter the global data set by Country, Region, and Confirmed Case counts via an intuitive sidebar.Key Performance Indicators (KPIs): Displays real-time totals for Confirmed Cases, Deaths, and Recovered based on the active filters.Geographic Visualization: Features a Plotly Choropleth map to visualize the spread of confirmed cases worldwide.Comparative Charts: Presents top 10 rankings for cases, deaths, and recoveries using interactive bar charts.Predictive Analysis (Linear Regression): Includes a manual Linear Regression analysis (calculated using NumPy) that models the correlation between total Deaths and Confirmed Cases, complete with $R^2$ and RMSE metrics.Visual Aesthetics: Utilizes custom CSS to implement a dramatic, dark mode theme with animated cinematic titles.</code>
+🙌 Acknowledgments
 
----
+📍 Overview
 
-## 📁 Project Structure
+This project is a Global COVID-19 Data Dashboard built using the Streamlit framework for rapid data visualization and analysis. This application provides a comprehensive, interactive, and visually striking dashboard for analyzing global COVID-19 data.
 
-```sh
+It is engineered with a separation of concerns strategy:
+
+FDS_backend.py: Handles all data processing (loading, cleaning, calculating rates, filtering, and aggregation) using the Pandas and NumPy libraries.
+
+FDS_app.py: Manages the user interface and visualization using Streamlit and Plotly for a dynamic, dark-themed experience.
+
+👾 Features
+
+Interactive Filtering: Users can filter the global data set by Country, Region, and Confirmed Case counts via an intuitive sidebar.
+
+Key Performance Indicators (KPIs): Displays real-time totals for Confirmed Cases, Deaths, and Recovered based on the active filters.
+
+Geographic Visualization: Features a Plotly Choropleth map to visualize the spread of confirmed cases worldwide.
+
+Comparative Charts: Presents top 10 rankings for cases, deaths, and recoveries using interactive bar charts.
+
+Predictive Analysis (Linear Regression): Includes a Linear Regression analysis (calculated manually using NumPy) that models the correlation between total Deaths and Confirmed Cases, complete with $R^2$ and RMSE metrics.
+
+Visual Aesthetics: Utilizes custom CSS to implement a dramatic, dark mode theme with animated cinematic titles.
+
+📁 Project Structure
+
 └── Covid19-dashboard/
-    ├── FDS_app.py
-    ├── FDS_backend.py
-    ├── README.md
-    ├── country_wise_latest_covid.csv
-    └── requirements.txt
-```
+    ├── FDS_app.py
+    ├── FDS_backend.py
+    ├── README.md
+    ├── country_wise_latest_covid.csv
+    └── requirements.txt
 
 
-### 📂 Project Index
+📂 Project Index
+
 <details open>
-	<summary><b><code>COVID19-DASHBOARD/</code></b></summary>
-	<details> <!-- __root__ Submodule -->
-		<summary><b>__root__</b></summary>
-		<blockquote>
-			<table>
-			<tr>
-				<td><b><a href='https://github.com/Atharva0123/Covid19-dashboard/blob/master/FDS_backend.py'>FDS_backend.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/Atharva0123/Covid19-dashboard/blob/master/requirements.txt'>requirements.txt</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/Atharva0123/Covid19-dashboard/blob/master/FDS_app.py'>FDS_app.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			</table>
-		</blockquote>
-	</details>
+<summary><b><code>COVID19-DASHBOARD/</code></b></summary>
+<details> <!-- root Submodule -->
+<summary><b>root</b></summary>
+<blockquote>
+<table>
+<tr>
+<td><b><a href='https://github.com/Atharva0123/Covid19-dashboard/blob/master/FDS_backend.py'>FDS_backend.py</a></b></td>
+<td><code>❯ Handles all data loading, cleaning, filtering, and aggregation logic.</code></td>
+</tr>
+<tr>
+<td><b><a href='https://github.com/Atharva0123/Covid19-dashboard/blob/master/requirements.txt'>requirements.txt</a></b></td>
+<td><code>❯ Lists Python dependencies: Streamlit, Pandas, Plotly, NumPy, and scikit-learn.</code></td>
+</tr>
+<tr>
+<td><b><a href='https://github.com/Atharva0123/Covid19-dashboard/blob/master/FDS_app.py'>FDS_app.py</a></b></td>
+<td><code>❯ The main entry point. Defines the Streamlit UI, layout, and plots the visualizations.</code></td>
+</tr>
+<tr>
+<td><b><a href='https://www.google.com/search?q=https://github.com/Atharva0123/Covid19-dashboard/blob/master/country_wise_latest_covid.csv'>country_wise_latest_covid.csv</a></b></td>
+<td><code>❯ The primary dataset used by the application.</code></td>
+</tr>
+</table>
+</blockquote>
+</details>
 </details>
 
----
-## 🚀 Getting Started
+🚀 Getting Started
 
-### ☑️ Prerequisites
+☑️ Prerequisites
 
-Before getting started with Covid19-dashboard, ensure your runtime environment meets the following requirements:
+Before getting started with the COVID19-DASHBOARD, ensure your environment meets the following requirements:
 
-- **Programming Language:** Python
-- **Package Manager:** Pip
+Programming Language: Python 3.8+
+
+Package Manager: Pip
+
+⚙️ Installation
+
+Install the dashboard using the following steps:
+
+Clone the repository:
+
+❯ git clone [https://github.com/Atharva0123/Covid19-dashboard](https://github.com/Atharva0123/Covid19-dashboard)
 
 
-### ⚙️ Installation
+Navigate to the project directory:
 
-Install Covid19-dashboard using one of the following methods:
-
-**Build from source:**
-
-1. Clone the Covid19-dashboard repository:
-```sh
-❯ git clone https://github.com/Atharva0123/Covid19-dashboard
-```
-
-2. Navigate to the project directory:
-```sh
 ❯ cd Covid19-dashboard
-```
-
-3. Install the project dependencies:
 
 
-**Using `pip`** &nbsp; [<img align="center" src="https://img.shields.io/badge/Pip-3776AB.svg?style={badge_style}&logo=pypi&logoColor=white" />](https://pypi.org/project/pip/)
+Install the project dependencies using the provided requirements.txt:
 
-```sh
 ❯ pip install -r requirements.txt
-```
 
 
+🤖 Usage
+
+Since this is a Streamlit application, run it using the streamlit run command, pointing to the main application file:
+
+❯ streamlit run FDS_app.py
 
 
-### 🤖 Usage
-Run Covid19-dashboard using the following command:
-**Using `pip`** &nbsp; [<img align="center" src="https://img.shields.io/badge/Pip-3776AB.svg?style={badge_style}&logo=pypi&logoColor=white" />](https://pypi.org/project/pip/)
+This command will open the dashboard automatically in your default web browser.
 
-```sh
-❯ python {entrypoint}
-```
+🧪 Testing
 
+Run the test suite using the following command (assuming you have a test setup):
 
-### 🧪 Testing
-Run the test suite using the following command:
-**Using `pip`** &nbsp; [<img align="center" src="https://img.shields.io/badge/Pip-3776AB.svg?style={badge_style}&logo=pypi&logoColor=white" />](https://pypi.org/project/pip/)
-
-```sh
 ❯ pytest
-```
 
 
----
-## 📌 Project Roadmap
+📌 Project Roadmap
 
-- [X] **`Task 1`**: <strike>Implement feature one.</strike>
-- [ ] **`Task 2`**: Implement feature two.
-- [ ] **`Task 3`**: Implement feature three.
+[X] Task 1: <strike>Implement feature one.</strike>
 
----
+[ ] Task 2: Implement feature two.
 
-## 🔰 Contributing
+[ ] Task 3: Implement feature three.
 
-- **💬 [Join the Discussions](https://github.com/Atharva0123/Covid19-dashboard/discussions)**: Share your insights, provide feedback, or ask questions.
-- **🐛 [Report Issues](https://github.com/Atharva0123/Covid19-dashboard/issues)**: Submit bugs found or log feature requests for the `Covid19-dashboard` project.
-- **💡 [Submit Pull Requests](https://github.com/Atharva0123/Covid19-dashboard/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
+🔰 Contributing
+
+💬 Join the Discussions: Share your insights, provide feedback, or ask questions.
+
+🐛 Report Issues: Submit bugs found or log feature requests for the Covid19-dashboard project.
+
+💡 Submit Pull Requests: Review open PRs, and submit your own PRs.
 
 <details closed>
 <summary>Contributing Guidelines</summary>
 
-1. **Fork the Repository**: Start by forking the project repository to your github account.
-2. **Clone Locally**: Clone the forked repository to your local machine using a git client.
-   ```sh
-   git clone https://github.com/Atharva0123/Covid19-dashboard
-   ```
-3. **Create a New Branch**: Always work on a new branch, giving it a descriptive name.
-   ```sh
-   git checkout -b new-feature-x
-   ```
-4. **Make Your Changes**: Develop and test your changes locally.
-5. **Commit Your Changes**: Commit with a clear message describing your updates.
-   ```sh
-   git commit -m 'Implemented new feature x.'
-   ```
-6. **Push to github**: Push the changes to your forked repository.
-   ```sh
-   git push origin new-feature-x
-   ```
-7. **Submit a Pull Request**: Create a PR against the original project repository. Clearly describe the changes and their motivations.
-8. **Review**: Once your PR is reviewed and approved, it will be merged into the main branch. Congratulations on your contribution!
+Fork the Repository: Start by forking the project repository to your github account.
+
+Clone Locally: Clone the forked repository to your local machine using a git client.
+   sh    git clone [https://github.com/Atharva0123/Covid19-dashboard](https://github.com/Atharva0123/Covid19-dashboard)    
+
+Create a New Branch: Always work on a new branch, giving it a descriptive name.
+   sh    git checkout -b new-feature-x    
+
+Make Your Changes: Develop and test your changes locally.
+
+Commit Your Changes: Commit with a clear message describing your updates.
+   sh    git commit -m 'Implemented new feature x.'    
+
+Push to github: Push the changes to your forked repository.
+   sh    git push origin new-feature-x    
+
+Submit a Pull Request: Create a PR against the original project repository. Clearly describe the changes and their motivations.
+
+Review: Once your PR is reviewed and approved, it will be merged into the main branch. Congratulations on your contribution!
+
 </details>
 
 <details closed>
 <summary>Contributor Graph</summary>
-<br>
+
+
+
+
+
 <p align="left">
-   <a href="https://github.com{/Atharva0123/Covid19-dashboard/}graphs/contributors">
-      <img src="https://contrib.rocks/image?repo=Atharva0123/Covid19-dashboard">
-   </a>
+   <a href="https://github.com{/Atharva0123/Covid19-dashboard/}graphs/contributors">
+      <img src="https://contrib.rocks/image?repo=Atharva0123/Covid19-dashboard">
+   </a>
 </p>
 </details>
 
----
+🎗 License
 
-## 🎗 License
+This project is protected under the SELECT-A-LICENSE License. For more details, refer to the LICENSE file.
 
-This project is protected under the [SELECT-A-LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
+🙌 Acknowledgments
 
----
+The data source for this dashboard is based on publicly available WHO Global Reports.
 
-## 🙌 Acknowledgments
-
-- List any resources, contributors, inspiration, etc. here.
-
----
+Built with Streamlit and Plotly for dynamic data visualization.
