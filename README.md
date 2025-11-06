@@ -1,9 +1,7 @@
 <div align="left" style="position: relative;">
 <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" align="right" width="30%" style="margin: -20px 0 0 20px;">
 <h1>COVID19-DASHBOARD</h1>
-<p align="left">
-	<em><code>❯ REPLACE-ME</code></em>
-</p>
+
 <p align="left">
 	<img src="https://img.shields.io/github/license/Atharva0123/Covid19-dashboard?style=default&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="license">
 	<img src="https://img.shields.io/github/last-commit/Atharva0123/Covid19-dashboard?style=default&logo=git&logoColor=white&color=0080ff" alt="last-commit">
@@ -37,14 +35,17 @@
 ---
 
 ## 📍 Overview
+<code>❯ This application provides a comprehensive, interactive, and visually striking dashboard for analyzing global COVID-19 data. It is engineered with a separation of concerns strategy, using two Python files:</code>
 
-<code>❯ REPLACE-ME</code>
+<code>❯ FDS_backend.py: Handles all data processing (loading, cleaning, calculating rates, filtering, and aggregation) using the Pandas library.</code>
+
+<code>❯ FDS_app.py: Manages the user interface and visualization using Streamlit and Plotly for a dynamic, dark-themed experience.</code>
 
 ---
 
 ## 👾 Features
 
-<code>❯ REPLACE-ME</code>
+<code>❯ Interactive Filtering: Users can filter the global data set by Country, Region, and Confirmed Case counts via an intuitive sidebar.Key Performance Indicators (KPIs): Displays real-time totals for Confirmed Cases, Deaths, and Recovered based on the active filters.Geographic Visualization: Features a Plotly Choropleth map to visualize the spread of confirmed cases worldwide.Comparative Charts: Presents top 10 rankings for cases, deaths, and recoveries using interactive bar charts.Predictive Analysis (Linear Regression): Includes a manual Linear Regression analysis (calculated using NumPy) that models the correlation between total Deaths and Confirmed Cases, complete with $R^2$ and RMSE metrics.Visual Aesthetics: Utilizes custom CSS to implement a dramatic, dark mode theme with animated cinematic titles.</code>
 
 ---
 
