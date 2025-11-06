@@ -5,6 +5,14 @@ import pandas as pd
 from datetime import datetime
 from FDS_backend import load_data, compute_kpis, top_n_countries, region_summary, filter_data
 
+# --- NEW IMPORTS FOR LINEAR REGRESSION ---
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score, mean_squared_error
+# ----------------------------------------
+
 # -----------------------------------------------------------
 # Page Setup
 # -----------------------------------------------------------
@@ -217,7 +225,81 @@ with col3:
 st.divider()
 
 # -----------------------------------------------------------
-# 🥧 Case Severity Breakdown (New Pie Chart Topic)
+# 📊 Linear Regression Analysis (New Section)
+# -----------------------------------------------------------
+st.subheader("📈 Linear Regression: Confirmed Cases vs. Deaths")
+
+# Filter data for regression: must have non-zero deaths and confirmed cases
+regression_df = filtered_df[
+    (filtered_df["deaths"] > 0) & (filtered_df["confirmed"] > 0)
+].copy()
+
+if len(regression_df) >= 2:
+    # Prepare data for scikit-learn
+    # x (Deaths) must be reshaped for the model
+    x = regression_df["deaths"].values.reshape(-1, 1)
+    y = regression_df["confirmed"].values
+
+    # 1. Model Training
+    model = LinearRegression()
+    model.fit(x, y)
+    y_pred = model.predict(x)
+
+    # 2. Metrics Calculation
+    r2 = r2_score(y, y_pred)
+    mse = mean_squared_error(y, y_pred)
+    rmse = np.sqrt(mse)
+    slope = model.coef_[0]
+    intercept = model.intercept_
+    
+    # 3. Streamlit Display (Metrics)
+    st.markdown(f"""
+        <div style='background-color: #111827; padding: 10px; border-radius: 5px; font-size: 16px;'>
+        Linear Equation: $\\text{{Confirmed}} = {slope:.4f} \\times \\text{{Deaths}} + {intercept:.2f}$<br>
+        $R^2$ Score: <b>{r2:.4f}</b> | RMSE: <b>{rmse:.2f}</b>
+        </div>
+    """, unsafe_allow_html=True)
+
+
+    # 4. Plotting using Matplotlib/Seaborn (Rendered via st.pyplot)
+    fig, ax = plt.subplots(figsize=(10, 6))
+    
+    # Scatter plot of actual data
+    sns.scatterplot(x=regression_df["deaths"], y=regression_df["confirmed"], color="royalblue", alpha=0.6, label="Actual Data", ax=ax)
+    
+    # Regression line
+    ax.plot(regression_df["deaths"], y_pred, color="crimson", linewidth=2.5, label="Regression Line")
+
+    ax.set_title("Linear Regression: Confirmed Cases vs Deaths", fontsize=16, weight='bold', color='white')
+    ax.set_xlabel("Deaths", fontsize=12, color='white')
+    ax.set_ylabel("Confirmed Cases", fontsize=12, color='white')
+    ax.legend(facecolor='#333333', edgecolor='white', labelcolor='white')
+    ax.grid(alpha=0.3)
+    
+    # Annotate the plot with results
+    ax.text(
+        x=regression_df["deaths"].max() * 0.5,
+        y=regression_df["confirmed"].max() * 0.3,
+        s=f"Equation: Confirmed = {slope:.2f} × Deaths + {intercept:.2f}\n$R^2$ = {r2:.4f}\nRMSE = {rmse:.2f}",
+        fontsize=10,
+        bbox=dict(facecolor='#333333', alpha=0.7, edgecolor='gray', boxstyle='round,pad=0.5', color='white')
+    )
+    
+    # Set plot background to match Streamlit dark theme
+    ax.set_facecolor("#203a43")
+    fig.patch.set_facecolor("#203a43")
+    ax.tick_params(colors='white')
+    
+    plt.tight_layout()
+    st.pyplot(fig)
+    plt.close(fig) # Prevent memory leaks
+else:
+    st.info("Insufficient data points (less than 2) with non-zero cases/deaths for regression analysis based on current filters.")
+
+st.divider()
+
+# -----------------------------------------------------------
+# 🥧 Case Severity Breakdown (Global Share)
 # -----------------------------------------------------------
 st.subheader("🥧 Case Severity Breakdown (Global Share)")
 try:
