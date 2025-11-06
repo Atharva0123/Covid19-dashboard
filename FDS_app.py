@@ -5,13 +5,11 @@ import pandas as pd
 from datetime import datetime
 from FDS_backend import load_data, compute_kpis, top_n_countries, region_summary, filter_data
 
-# --- NEW IMPORTS FOR LINEAR REGRESSION ---
+# --- CORE IMPORTS FOR REGRESSION (must be present) ---
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score, mean_squared_error
-# ----------------------------------------
+# -----------------------------------------------------
 
 # -----------------------------------------------------------
 # Page Setup
@@ -225,7 +223,7 @@ with col3:
 st.divider()
 
 # -----------------------------------------------------------
-# 📊 Linear Regression Analysis (New Section)
+# 📊 Linear Regression Analysis (Plotly Implementation)
 # -----------------------------------------------------------
 st.subheader("📈 Linear Regression: Confirmed Cases vs. Deaths")
 
@@ -236,7 +234,6 @@ regression_df = filtered_df[
 
 if len(regression_df) >= 2:
     # Prepare data for scikit-learn
-    # x (Deaths) must be reshaped for the model
     x = regression_df["deaths"].values.reshape(-1, 1)
     y = regression_df["confirmed"].values
 
@@ -254,45 +251,51 @@ if len(regression_df) >= 2:
     
     # 3. Streamlit Display (Metrics)
     st.markdown(f"""
-        <div style='background-color: #111827; padding: 10px; border-radius: 5px; font-size: 16px;'>
+        <div style='background-color: #111827; padding: 10px; border-radius: 5px; font-size: 16px; margin-bottom: 20px;'>
         Linear Equation: $\\text{{Confirmed}} = {slope:.4f} \\times \\text{{Deaths}} + {intercept:.2f}$<br>
         $R^2$ Score: <b>{r2:.4f}</b> | RMSE: <b>{rmse:.2f}</b>
         </div>
     """, unsafe_allow_html=True)
 
 
-    # 4. Plotting using Matplotlib/Seaborn (Rendered via st.pyplot)
-    fig, ax = plt.subplots(figsize=(10, 6))
+    # 4. Plotting using Plotly (Scatter + Regression Line)
     
-    # Scatter plot of actual data
-    sns.scatterplot(x=regression_df["deaths"], y=regression_df["confirmed"], color="royalblue", alpha=0.6, label="Actual Data", ax=ax)
-    
-    # Regression line
-    ax.plot(regression_df["deaths"], y_pred, color="crimson", linewidth=2.5, label="Regression Line")
+    # Create a DataFrame for the regression line data
+    line_df = pd.DataFrame({
+        "Deaths": regression_df["deaths"],
+        "Confirmed_Predicted": y_pred
+    }).sort_values(by="Deaths")
 
-    ax.set_title("Linear Regression: Confirmed Cases vs Deaths", fontsize=16, weight='bold', color='white')
-    ax.set_xlabel("Deaths", fontsize=12, color='white')
-    ax.set_ylabel("Confirmed Cases", fontsize=12, color='white')
-    ax.legend(facecolor='#333333', edgecolor='white', labelcolor='white')
-    ax.grid(alpha=0.3)
-    
-    # Annotate the plot with results
-    ax.text(
-        x=regression_df["deaths"].max() * 0.5,
-        y=regression_df["confirmed"].max() * 0.3,
-        s=f"Equation: Confirmed = {slope:.2f} × Deaths + {intercept:.2f}\n$R^2$ = {r2:.4f}\nRMSE = {rmse:.2f}",
-        fontsize=10,
-        bbox=dict(facecolor='#333333', alpha=0.7, edgecolor='gray', boxstyle='round,pad=0.5', color='white')
+    # Scatter Plot
+    fig_reg = px.scatter(
+        regression_df, 
+        x="deaths", 
+        y="confirmed", 
+        color_discrete_sequence=["#3a86ff"], # Blue for scatter
+        hover_name="country",
+        title="Confirmed Cases vs. Deaths (Actual Data)",
+        template="plotly_dark"
     )
     
-    # Set plot background to match Streamlit dark theme
-    ax.set_facecolor("#203a43")
-    fig.patch.set_facecolor("#203a43")
-    ax.tick_params(colors='white')
+    # Add Regression Line (as a separate trace)
+    fig_reg.add_scatter(
+        x=line_df["Deaths"],
+        y=line_df["Confirmed_Predicted"],
+        mode='lines',
+        name=f"Regression Line (R²={r2:.4f})",
+        line=dict(color='crimson', width=3)
+    )
+
+    # Update layout for aesthetics
+    fig_reg.update_layout(
+        xaxis_title="Deaths",
+        yaxis_title="Confirmed Cases",
+        margin=dict(t=50, b=0, l=0, r=0),
+        legend=dict(yanchor="top", y=0.99, xanchor="left", x=0.01)
+    )
     
-    plt.tight_layout()
-    st.pyplot(fig)
-    plt.close(fig) # Prevent memory leaks
+    st.plotly_chart(fig_reg, use_container_width=True)
+
 else:
     st.info("Insufficient data points (less than 2) with non-zero cases/deaths for regression analysis based on current filters.")
 
